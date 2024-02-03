@@ -60,10 +60,16 @@ Then we copy and paste the json content and press **Save** button
 
 ## 2. Create Azure Functions Project
 
+We install the Project Templates with dotnet
+
+```
+dotnet new --install Microsoft.Azure.Functions.Worker.ProjectTemplates
+```
+
 First, we create a new Azure Functions project targeting .NET 8
 
 ```
-dotnet new func -n CosmosDbCrudFunctions --framework net8.0
+dotnet new func -n CosmosDbCrudFunctions --Framework net8.0
 cd CosmosDbCrudFunctions
 ```
 
