@@ -1,6 +1,10 @@
-# Azure Function to Create an Item in Azure CosmosDB
+# Azure Functions for CRUD operation with Azure CosmosDB
 
-## 1. Create Azure Functions Project
+## 1. Prerequisite
+
+Create Azure CosmosDB account, database and collection
+
+## 2. Create Azure Functions Project
 
 First, we create a new Azure Functions project targeting .NET 8
 
@@ -9,7 +13,7 @@ dotnet new func -n CosmosDbCrudFunctions --framework net8.0
 cd CosmosDbCrudFunctions
 ```
 
-## 2. Add NuGet Package for Cosmos DB
+## 3. Add NuGet Package for Cosmos DB
 
 We add the necessary NuGet package for Cosmos DB integration
 
@@ -19,11 +23,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version <latest
 
 Replace <latest_version> with the latest version available at the time
 
+## 4. Implement CRUD Operations
 
-
-## 3. Implement CRUD Operations
-
-### 3.1. Create a new Item
+### 4.1. Create a new Item
 
 You will need to add a new class for each operation or implement them in a single class based on your preference
 
@@ -62,7 +64,7 @@ public static class CreateFunction
 }
 ```
 
-### 3.2. Read Operation: Retrieve an Item by ID
+### 4.2. Read Operation: Retrieve an Item by ID
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -95,7 +97,7 @@ public static class ReadFunction
 }
 ```
 
-### 3.3. Update Operation: Update an Item by ID
+### 4.3. Update Operation: Update an Item by ID
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -131,7 +133,7 @@ public static class UpdateFunction
 }
 ```
 
-### 3.4. Delete Operation: Delete an Item by ID
+### 4.4. Delete Operation: Delete an Item by ID
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -172,11 +174,7 @@ public static class DeleteFunction
 }
 ```
 
-
-
-
-
-## 4. Configure Local Settings
+## 5. Configure Local Settings
 
 In your **local.settings.json** file, add your Cosmos DB connection string as follows
 
@@ -190,5 +188,7 @@ In your **local.settings.json** file, add your Cosmos DB connection string as fo
   }
 }
 ```
+
+## 6. Run and test the Azure Function with Postman
 
 
