@@ -315,10 +315,29 @@ In your **local.settings.json** file, add your Cosmos DB connection string as fo
 
 We run and test the Create Azure Function and we get this output
 
+We test the function with **Postman** 
+
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/fdf67985-7b38-4ac5-831b-fe9641f05521)
 
-We test the function with Postman 
+We first send a **POST** request to create a new item
 
 http://localhost:7104/api/CreateItem
 
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/739cf8f8-1491-42fd-a7c4-ba7970b9111d)
+
+After we send a **GET** by ID request to retrive one item from the database
+
+http://localhost:7124/api/items/77
+
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CreateItem/assets/32194879/8e02de8f-26b7-49d5-906d-4559cc7fd170)
+
+We also send a **PUT** request to modify an existing item in the database
+
+http://localhost:7278/api/items/88
+
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CreateItem/assets/32194879/7dd8b019-d1a9-4423-98fd-d30e8e8020a1)
+
+Finally, we send a **DELETE** request to delete an item in the databse
+
+
+
