@@ -102,30 +102,44 @@ Similar patterns can be followed for Read, Update, and Delete operations.
 **CreateFunction.cs**
 
 ```csharp
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Azure.Cosmos;
+using System;
 
-public static class CreateFunction
+namespace CosmosDbCrudFunctions
 {
-    [FunctionName("CreateItem")]
-    public static async Task<IActionResult> CreateItem(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
-        [CosmosDB(
-            databaseName: "YourDatabaseName",
-            collectionName: "YourCollectionName",
-            ConnectionStringSetting = "CosmosDBConnection")] IAsyncCollector<dynamic> items,
-        ILogger log)
+    public static class CreateFunction
     {
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
-        await items.AddAsync(data);
+        private static readonly string EndpointUri = Environment.GetEnvironmentVariable("CosmosDbEndpointUri");
+        private static readonly string PrimaryKey = Environment.GetEnvironmentVariable("CosmosDbPrimaryKey");
+        private static readonly string DatabaseName = "ToDoList";
+        private static readonly string ContainerName = "Items";
+        private static CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
 
-        return new OkObjectResult(data);
+        [Function("CreateItem")]
+        public static async Task<HttpResponseData> CreateItem(
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestData req,
+            FunctionContext executionContext)
+        {
+            var logger = executionContext.GetLogger("CreateItem");
+            logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+
+            Container container = cosmosClient.GetContainer(DatabaseName, ContainerName);
+            await container.CreateItemAsync(data, new PartitionKey(data.id.ToString()));
+
+            var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
+            await response.WriteStringAsync("Item created successfully");
+
+            return response;
+        }
     }
 }
 ```
@@ -257,4 +271,12 @@ In your **local.settings.json** file, add your Cosmos DB connection string as fo
 
 ## 6. Run and test the Azure Function with Postman
 
+We run and test the Create Azure Function and we get this output
 
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/fdf67985-7b38-4ac5-831b-fe9641f05521)
+
+We test the function with Postman 
+
+http://localhost:7104/api/CreateItem
+
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/739cf8f8-1491-42fd-a7c4-ba7970b9111d)
