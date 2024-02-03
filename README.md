@@ -91,8 +91,6 @@ We add the necessary NuGet package **Microsoft.Azure.Cosmos**
 dotnet add package Microsoft.Azure.Cosmos
 ```
 
-![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/37b60fa9-f8ef-438f-903a-807e29406a6c)
-
 We also add the package **Microsoft.Azure.WebJobs.Extensions.Http**
 
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/f308274c-378e-420c-bd1b-db24e485460b)
