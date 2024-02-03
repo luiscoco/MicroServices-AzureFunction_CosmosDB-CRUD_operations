@@ -40,12 +40,16 @@ We also create a **New Container**: Items
 
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/a7f40ff9-af30-4d1d-b04a-55fe66d7b4bb)
 
-## 2. Insert the new items in the Azure CosmosDB
+We insert the new items in the Azure CosmosDB
 
 This is the **new item** json file:
 
 ```json
-
+{
+  "id": "1",
+  "name": "Sample Item",
+  "todoItem": "Sample Category"
+}
 ```
 
 We click in **Items** and then **New Item**
