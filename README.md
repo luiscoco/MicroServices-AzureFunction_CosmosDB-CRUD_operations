@@ -73,6 +73,8 @@ dotnet new func -n CosmosDbCrudFunctions --Framework net8.0
 cd CosmosDbCrudFunctions
 ```
 
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/45cb80bc-d2ce-497e-82b0-2e4dc0f587db)
+
 ## 3. Add NuGet Package for Cosmos DB
 
 We add the necessary NuGet package for Cosmos DB integration
@@ -80,6 +82,8 @@ We add the necessary NuGet package for Cosmos DB integration
 ```
 dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB
 ```
+
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/37b60fa9-f8ef-438f-903a-807e29406a6c)
 
 ## 4. Implement CRUD Operations
 
