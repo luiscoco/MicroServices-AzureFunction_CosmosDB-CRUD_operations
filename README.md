@@ -54,11 +54,9 @@ This is the **new item** json file:
 
 We click in **Items** and then **New Item**
 
-![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/9a8bd5b0-7d21-4896-87e2-b8dfddd8ec54)
-
 Then we copy and paste the json content and press **Save** button
 
-![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/775a0a33-b705-4194-8734-ea69bb11851c)
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/08809426-85e4-4e75-a938-6d779989b218)
 
 ## 2. Create Azure Functions Project
 
