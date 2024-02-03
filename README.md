@@ -91,6 +91,23 @@ We also add the package **Microsoft.Azure.WebJobs.Extensions.Http**
 
 ## 4. Implement CRUD Operations
 
+### 4.0 Configure the CosmosDB connection
+
+**local.settings.json**
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "CosmosDbEndpointUri": "",
+    "CosmosDbPrimaryKey": ""
+  }
+}
+```
+
+
 ### 4.1. Create a new Item
 
 You will need to add a new class for each operation or implement them in a single class based on your preference
