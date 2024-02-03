@@ -267,40 +267,51 @@ namespace CosmosDbCrudFunctions
 ### 4.4. Delete Operation: Delete an Item by ID
 
 ```csharp
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.Azure.Cosmos;
+using System;
 
-public static class DeleteFunction
+namespace CosmosDbCrudFunctions
 {
-    [FunctionName("DeleteItem")]
-    public static async Task<IActionResult> DeleteItem(
-        [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "items/{id}")] HttpRequest req,
-        [CosmosDB(
-            databaseName: "YourDatabaseName",
-            collectionName: "YourCollectionName",
-            ConnectionStringSetting = "CosmosDBConnection",
-            Id = "{id}",
-            PartitionKey = "{id}")] dynamic item,
-        [CosmosDB(
-            databaseName: "YourDatabaseName",
-            collectionName: "YourCollectionName",
-            ConnectionStringSetting = "CosmosDBConnection")] DocumentClient client,
-        ILogger log, string id)
+    public static class DeleteFunction
     {
-        if (item == null)
+        private static readonly string EndpointUri = Environment.GetEnvironmentVariable("CosmosDbEndpointUri");
+        private static readonly string PrimaryKey = Environment.GetEnvironmentVariable("CosmosDbPrimaryKey");
+        private static readonly string DatabaseName = "ToDoList";
+        private static readonly string ContainerName = "Items";
+        private static CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+
+        [Function("DeleteItem")]
+        public static async Task<HttpResponseData> DeleteItem(
+            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "items/{id}")] HttpRequestData req,
+            string id,
+            FunctionContext executionContext)
         {
-            log.LogInformation($"Item not found for deletion with id: {id}");
-            return new NotFoundResult();
+            var logger = executionContext.GetLogger("DeleteItem");
+            logger.LogInformation($"Deleting item with ID: {id}");
+
+            Container container = cosmosClient.GetContainer(DatabaseName, ContainerName);
+
+            try
+            {
+                // Attempt to delete the item. If it does not exist, a CosmosException with status code 404 is thrown.
+                await container.DeleteItemAsync<object>(id, new PartitionKey(id));
+                var okResponse = req.CreateResponse(System.Net.HttpStatusCode.OK);
+                okResponse.Headers.Add("Content-Type", "application/json; charset=utf-8");
+                await okResponse.WriteStringAsync($"Successfully deleted item with ID: {id}");
+                return okResponse;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                var notFoundResponse = req.CreateResponse(System.Net.HttpStatusCode.NotFound);
+                notFoundResponse.Headers.Add("Content-Type", "application/json; charset=utf-8");
+                await notFoundResponse.WriteStringAsync($"Item with ID: {id} not found.");
+                return notFoundResponse;
+            }
         }
-
-        Uri documentUri = UriFactory.CreateDocumentUri("YourDatabaseName", "YourCollectionName", id);
-        await client.DeleteDocumentAsync(documentUri, new RequestOptions { PartitionKey = new PartitionKey(id) });
-
-        return new OkResult();
     }
 }
 ```
