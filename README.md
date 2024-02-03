@@ -68,7 +68,7 @@ Then we copy and paste the json content and press **Save** button
 
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/08809426-85e4-4e75-a938-6d779989b218)
 
-## 2. Create Azure Functions Project
+## 2. Create Azure Functions Projects
 
 We install the Project Templates with dotnet
 
@@ -82,8 +82,6 @@ First, we create a new Azure Functions project targeting .NET 8
 dotnet new func -n CosmosDbCrudFunctions --Framework net8.0
 cd CosmosDbCrudFunctions
 ```
-
-![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/45cb80bc-d2ce-497e-82b0-2e4dc0f587db)
 
 ## 3. Add NuGet Package for Cosmos DB
 
@@ -99,7 +97,7 @@ We also add the package **Microsoft.Azure.WebJobs.Extensions.Http**
 
 ![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/f308274c-378e-420c-bd1b-db24e485460b)
 
-## 4. Implement CRUD Operations
+## 4. Implement each CRUD Operation in one Azure Function
 
 ### 4.1. Create a new Item
 
