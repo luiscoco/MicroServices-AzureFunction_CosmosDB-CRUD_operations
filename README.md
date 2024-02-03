@@ -355,5 +355,7 @@ http://localhost:7278/api/items/88
 
 Finally, we send a **DELETE** request to delete an item in the databse
 
+ http://localhost:7164/api/items/88
 
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CreateItem/assets/32194879/727fe9b1-294a-4688-816c-379a4366f739)
 
