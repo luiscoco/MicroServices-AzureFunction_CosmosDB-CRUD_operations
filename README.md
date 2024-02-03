@@ -38,7 +38,7 @@ We also create a **New Container**: Items
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/10e1d766-9c53-4ab0-9624-52f257340480)
 
-![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/95de1c25-49b8-496b-b3bb-bdeab06980ad)
+![image](https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CRUD_operations/assets/32194879/f1fcc755-20f2-4c9b-a4f0-5ade25cbf9ec)
 
 ## 2. Insert the new items in the Azure CosmosDB
 
