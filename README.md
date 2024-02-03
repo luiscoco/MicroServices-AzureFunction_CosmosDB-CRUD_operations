@@ -30,8 +30,6 @@ Capacity mode: **serverless**
 
 We navigate to the **Data Explorer** page and we create a **New Database** and a **New Container**
 
-![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/fcc35ed4-cd30-490c-8147-10475e4d3e38)
-
 We first create a **New Database**. We input the **DatabaseId**: ToDoList
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/978b2f67-01c3-4711-95fd-e0eeb75a99c1)
