@@ -1,5 +1,15 @@
 # Azure Functions for CRUD operations with Azure CosmosDB
 
+See the source code for this example in these repos:
+
+https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-CreateItem
+
+https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-ReadItem
+
+https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-UpdateItem
+
+https://github.com/luiscoco/MicroServices-AzureFunction_CosmosDB-DeleteItem
+
 ## 1. Prerequisite
 
 Create Azure CosmosDB account, database and collection
