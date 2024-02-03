@@ -4,6 +4,60 @@
 
 Create Azure CosmosDB account, database and collection
 
+e navigate to **Azure CosmosDB** service and we click in this option to create a new account:
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/3822db85-173d-411d-8383-7f97d07c05f4)
+
+We click on **Azure CosmosDB account** button
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/c1080788-bfc0-445e-9084-ce0f0772044a)
+
+Now we select the option **Azure Cosmos DB for NoSQL**, and we press the **create** button
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/69182e3f-9493-41a8-ab6b-92308a9bdddf)
+
+In following screen we input the required data for creating the service
+
+We create a new **ResourceGroup name**: myRG
+
+We set the **account name**: mycosmosdbluis1974
+
+We choose the service **location**: France Central
+
+Capacity mode: **serverless**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/ed5a1407-0303-44b3-b528-7a7fc1398d80)
+
+We navigate to the **Data Explorer** page and we create a **New Database** and a **New Container**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/fcc35ed4-cd30-490c-8147-10475e4d3e38)
+
+We first create a **New Database**. We input the **DatabaseId**: ToDoList
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/978b2f67-01c3-4711-95fd-e0eeb75a99c1)
+
+We also create a **New Container**: Items
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/10e1d766-9c53-4ab0-9624-52f257340480)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/95de1c25-49b8-496b-b3bb-bdeab06980ad)
+
+## 2. Insert the new items in the Azure CosmosDB
+
+This is the **new item** json file:
+
+```json
+
+```
+
+We click in **Items** and then **New Item**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/9a8bd5b0-7d21-4896-87e2-b8dfddd8ec54)
+
+Then we copy and paste the json content and press **Save** button
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-AzureCosmosDB/assets/32194879/775a0a33-b705-4194-8734-ea69bb11851c)
+
 ## 2. Create Azure Functions Project
 
 First, we create a new Azure Functions project targeting .NET 8
