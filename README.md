@@ -58,7 +58,7 @@ This is the **new item** json file:
 {
   "id": "1",
   "name": "Sample Item",
-  "todoItem": "Sample Category"
+  "category": "Sample Category"
 }
 ```
 
