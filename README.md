@@ -1,4 +1,4 @@
-# Azure Functions for CRUD operation with Azure CosmosDB
+# Azure Functions for CRUD operations with Azure CosmosDB
 
 ## 1. Prerequisite
 
